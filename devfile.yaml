@@ -1,10 +1,10 @@
 schemaVersion: 2.1.0
 metadata:
-  name: python-hello-world
+  name: aws-cli
 components:
-  - name: python
+  - name: aws-cli
     container:
-      image: registry.redhat.io/devspaces/udi-rhel8:3.9
+      image: quay.io/balagokul/universal-developer-image:aws-cli
       volumeMounts:
         - name: venv
           path: /home/user/.venv
@@ -16,12 +16,3 @@ components:
   - name: venv
     volume:
       size: 1G
-commands:
-  - id: run
-    exec:
-      label: "Run the application"
-      component: python
-      workingDir: ${PROJECTS_ROOT}/python-hello-world
-      commandLine: python -m venv .venv && . .venv/bin/activate && python hello-world.py
-      group:
-        kind: run
